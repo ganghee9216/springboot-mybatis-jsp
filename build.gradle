@@ -24,9 +24,16 @@ dependencies {
     testImplementation('org.projectlombok:lombok')
     testAnnotationProcessor('org.projectlombok:lombok')
 
-    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
-    implementation("org.mariadb.jdbc:mariadb-java-client")
-    implementation('com.h2database:h2')
+//    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+//    implementation("org.mariadb.jdbc:mariadb-java-client")
+//    implementation('com.h2database:h2')
+
+    //mybatis 사용
+    implementation('mysql:mysql-connector-java:8.0.29')
+    implementation('mysql:mysql-connector-jdbc')
+    implementation('org.springframework.boot:spring-boot-starter-jdbc')
+    implementation('org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.2.2')
+    implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2')
 
     implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
     implementation('org.springframework.session:spring-session-jdbc')

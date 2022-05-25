@@ -30,7 +30,7 @@ dependencies {
 
     //mybatis 사용
     implementation('mysql:mysql-connector-java:8.0.29')
-    implementation('mysql:mysql-connector-jdbc')
+    runtimeOnly('com.oracle.database.jdbc:ojdbc8')
     implementation('org.springframework.boot:spring-boot-starter-jdbc')
     implementation('org.mybatis.spring.boot:mybatis-spring-boot-autoconfigure:2.2.2')
     implementation('org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.2')

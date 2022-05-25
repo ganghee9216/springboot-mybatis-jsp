@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot.mapper.PostsMapper">
+    <insert id="postsSave" parameterType="com.example.springboot.dto.posts.PostsDto">
+        INSERT INTO posts(title, content, author) values (#{title}, #{content}, #{author})
+        <selectKey keyProperty="id" resultType="Long" order="AFTER">
+            select last_insert_id()
+        </selectKey>
+    </insert>
+    <update id="postsUpdate" parameterType="com.example.springboot.dto.posts.PostsDto">
+        update posts set title = #{title}, content = #{content} where id=#{id};
+    </update>
+    <delete id="delete" parameterType="long">
+        delete from posts where id=#{id}
+    </delete>
+    <select id="findById" resultType="com.example.springboot.dto.posts.PostsDto">
+        select * from posts where id=#{id}
+    </select>
+    <select id="findAllDesc" resultType="com.example.springboot.dto.posts.PostsDto">
+        select * from posts order by id Desc
+    </select>
+</mapper>

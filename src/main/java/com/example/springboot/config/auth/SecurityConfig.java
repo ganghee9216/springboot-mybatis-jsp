@@ -1,6 +1,6 @@
 package com.example.springboot.config.auth;
 
-import com.example.springboot.domain.user.Role;
+import com.example.springboot.dto.user.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -27,7 +27,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     //"/"등 지정된 URL들은 permitAll()옵션을 통해 전체 열람 권한을 주었다.
                     //"/api/v1/**" 주소를 가진 API는 USER 권한을 가진 사람만 가능하도록 했다.
                     .antMatchers("/", "/css/**", "/images/**",
-                        "/js/**", "/h2-console/**").permitAll()
+                        "/js/**", "/h2-console/**","/error").permitAll()
                     .antMatchers("/api/v1/**").hasRole(Role.USER.name())
                     //설정된 값들 이외의 나머지 URL들을 나타낸다.
                     //authenticated()를 추가하여 나머지 URL들은 모두 인증된 사용자들에게만 허용하게 한다.

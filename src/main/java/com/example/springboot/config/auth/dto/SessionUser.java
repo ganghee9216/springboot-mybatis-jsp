@@ -1,6 +1,6 @@
 package com.example.springboot.config.auth.dto;
 
-import com.example.springboot.domain.user.User;
+import com.example.springboot.dto.user.UserDto;
 import lombok.Getter;
 
 import java.io.Serializable;
@@ -12,7 +12,7 @@ public class SessionUser implements Serializable {
     private String email;
     private String picture;
 
-    public SessionUser(User user){
+    public SessionUser(UserDto user){
         this.name = user.getName();
         this.email = user.getEmail();
         this.picture = user.getPicture();

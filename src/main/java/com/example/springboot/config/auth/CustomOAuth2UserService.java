@@ -2,8 +2,8 @@ package com.example.springboot.config.auth;
 
 import com.example.springboot.config.auth.dto.SessionUser;
 import com.example.springboot.config.auth.dto.OAuthAttributes;
-import com.example.springboot.domain.user.User;
-import com.example.springboot.domain.user.UserRepository;
+import com.example.springboot.dto.user.UserDto;
+import com.example.springboot.mapper.UserMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.client.userinfo.DefaultOAuth2UserService;
@@ -20,7 +20,7 @@ import java.util.Collections;
 @RequiredArgsConstructor
 @Service
 public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequest, OAuth2User>{
-    private final UserRepository userRepository;
+    private final UserMapper userMapper;
     private final HttpSession httpSession;
 
     @Override
@@ -38,7 +38,7 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
         //OAuto2UserService를 통해 가져온 OAuto2User의 attribute를 담을 클래스이다. 다른 소셜 로그인도 이 클래스를 사용한다.
         OAuthAttributes attributes = OAuthAttributes.of(registrationId, userNameAttributeName, oAuth2User.getAttributes());
 
-        User user = saveOrUpdate(attributes);
+        UserDto user = saveOrUpdate(attributes);
         //세션에 사용자 정보를 저장하기 위한 Dto클래스이다.
         httpSession.setAttribute("user", new SessionUser(user));
 
@@ -49,12 +49,15 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
                         attributes.getNameAttributeKey());
     }
 
-    private User saveOrUpdate(OAuthAttributes attributes){
-        User user = userRepository.findByEmail(attributes.getEmail())
+    private UserDto saveOrUpdate(OAuthAttributes attributes){
+        UserDto user = userMapper.findByEmail(attributes.getEmail())
                 .map(entity -> entity.update(attributes.getName(), attributes.getPicture()))
                 .orElse(attributes.toEntity());
 
-        return userRepository.save(user);
+                userMapper.save(user);
+
+                return userMapper.findUserById(user.getId());
+
     }
 
 }

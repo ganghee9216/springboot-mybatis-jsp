@@ -24,9 +24,6 @@ public class PostsServiceImpl implements PostsService {
     public Long update(Long id, PostsDto postsDto){
         PostsDto posts = postsMapper.findById(id);
         posts.update(postsDto.getTitle(), postsDto.getContent());
-//        HashMap<Long, PostsDto> map = new HashMap<Long, PostsDto>(){
-//            pu
-//        }
         postsMapper.postsUpdate(posts);
 
         return posts.getId();

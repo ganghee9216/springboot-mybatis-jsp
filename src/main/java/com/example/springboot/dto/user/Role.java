@@ -1,4 +1,4 @@
-package com.example.springboot.domain.user;
+package com.example.springboot.dto.user;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

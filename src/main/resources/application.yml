@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/kim?serverTimezone=UTC&characterEncoding=UTF-8
+    username: root
+    password: rhdwk9216
+  session:
+    store-type: jdbc
+    jdbc:
+      initialize-schema: always
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  profiles:
+    include: oauth
+
+server:
+  port: 8080
+
+mybatis:
+  mapper-locations: classpath:mapper/**.xml

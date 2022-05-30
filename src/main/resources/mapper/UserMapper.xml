@@ -8,14 +8,5 @@
     </select>
     <insert id="save" parameterType="com.example.springbootmybatisjsp.dto.user.UserDto">
         INSERT IGNORE INTO user(name, email, picture, role) values (#{name}, #{email}, #{picture}, #{role})
-        <selectKey keyProperty="id" resultType="Long" order="AFTER">
-            select LAST_INSERT_ID()
-        </selectKey>
     </insert>
-    <select id="findUserById" resultType="com.example.springbootmybatisjsp.dto.user.UserDto">
-        select * from user where id=#{id}
-    </select>
-    <delete id="deleteUser" parameterType="Long">
-        delete * from user where id=#{id}
-    </delete>
 </mapper>

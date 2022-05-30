@@ -6,7 +6,6 @@ import com.example.springbootmybatisjsp.dto.posts.PostsDto;
 import com.example.springbootmybatisjsp.mapper.UserMapper;
 import com.example.springbootmybatisjsp.service.PostsServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,7 +32,6 @@ public class IndexController {
         }
         return "index";
     }
-
     @GetMapping("/posts/save")
     public String postsSave() {
         return "posts-save";
@@ -45,11 +43,5 @@ public class IndexController {
         model.addAttribute("post", dto);
 
         return "posts-update";
-    }
-    @GetMapping("/logout/{id}")
-    public String deleteUser(@PathVariable Long id){
-        userMapper.deleteUser(id);
-
-        return "/";
     }
 }

@@ -56,8 +56,6 @@ public class CustomOAuth2UserService implements OAuth2UserService<OAuth2UserRequ
 
                 userMapper.save(user);
 
-                Long id = user.getId();
-
-                return userMapper.findUserById(id);
+                return user;
     }
 }

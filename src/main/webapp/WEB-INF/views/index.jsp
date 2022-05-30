@@ -10,7 +10,7 @@
             <c:choose>
                 <c:when test="${!empty user}">
                     Logged in as: <span id="user">${user.name}</span>
-                    <a href="/logout" id="deleteUser" value="${user.id}" class="btn btn-info active" role="button">Logout</a>
+                    <a href="/logout" class="btn btn-info active" role="button">Logout</a>
                 </c:when>
                 <c:otherwise>
                     <a href="/oauth2/authorization/google" class="btn btn-success active" role="button">Google Login</a>

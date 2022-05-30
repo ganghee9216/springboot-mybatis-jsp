@@ -5,14 +5,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
 
 //Spring Security설정 들을 활성화시켜준다.
 @EnableWebSecurity
@@ -42,9 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     .formLogin().defaultSuccessUrl("/")
                 .and()
-                    //로그아웃 기능에 대한 여러 설정의 진입점, 로그아웃 성공 시 / 주소로 이동한다.
-                    .logout()
-                        .logoutSuccessUrl("/")
+                    .logout().logoutSuccessUrl("/")
                 .and()
                     //OAuth2 로그인 기능에 대한 여러 설정의 진입점
                     .oauth2Login()

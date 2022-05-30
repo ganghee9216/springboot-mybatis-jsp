@@ -13,7 +13,6 @@ import java.util.List;
 @Service
 public class PostsServiceImpl implements PostsService {
 
-    @Autowired
     private final PostsMapper postsMapper;
 
     //트랜잭션 기능 적용, 메소드가 포함하고 있는 작업 중에 하나라도 실패할 경우 전체 작업을 취소한다.

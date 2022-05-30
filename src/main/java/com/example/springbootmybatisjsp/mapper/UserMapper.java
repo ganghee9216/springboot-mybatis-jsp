@@ -10,6 +10,4 @@ public interface UserMapper {
     Optional<UserDto> findByEmail(String email);
     void save(UserDto userDto);
     UserDto findUserById(Long id);
-    void deleteUser(Long id);
-
 }
